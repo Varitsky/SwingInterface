@@ -97,12 +97,14 @@ public class Form extends JFrame {
 
         ActionListener actionListener = new TestActionListener();
 
+
         buttonC.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 firstRowField.setText(e.getActionCommand());
             }
         });
+
 
 
         buttonArrowLeft.addActionListener(actionListener);
