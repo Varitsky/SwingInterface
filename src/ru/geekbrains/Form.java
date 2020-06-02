@@ -7,6 +7,8 @@ public class Form extends JFrame {
 
     public JTextField firstRowField;
 
+    static String text ="";
+
     public Form() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -32,15 +34,6 @@ public class Form extends JFrame {
 
         JButton buttonC = new JButton("C");
         buttonC.setBounds(0,50,100,50);
-
-
-        buttonC.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               firstRowField.setText(e.getActionCommand());
-            }
-        });
-
-
         JButton buttonArrowLeft = new JButton("<");
         buttonArrowLeft.setBounds(100,50,50,50);
         JButton buttonDivide = new JButton("/");
@@ -95,37 +88,47 @@ public class Form extends JFrame {
         add(buttonDot);
         add(buttonResult);
 
-        ActionListener actionListener = new TestActionListener();
-
-
-        buttonC.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                firstRowField.setText(e.getActionCommand());
-            }
-        });
-
-
-
-        buttonArrowLeft.addActionListener(actionListener);
-        buttonDivide.addActionListener(actionListener);
-        button7.addActionListener(actionListener);
-        button8.addActionListener(actionListener);
-        button9.addActionListener(actionListener);
-        buttonX.addActionListener(actionListener);
-        button4.addActionListener(actionListener);
-        button5.addActionListener(actionListener);
-        button6.addActionListener(actionListener);
-        buttonMinus.addActionListener(actionListener);
-        button1.addActionListener(actionListener);
-        button2.addActionListener(actionListener);
-        button3.addActionListener(actionListener);
-        buttonPlus.addActionListener(actionListener);
-        button0.addActionListener(actionListener);
-        buttonDot.addActionListener(actionListener);
-        buttonResult.addActionListener(actionListener);
+        WTF(buttonC, firstRowField);
+        WTF(buttonArrowLeft, firstRowField);
+        WTF(buttonDivide, firstRowField);
+        WTF(button7, firstRowField);
+        WTF(button8, firstRowField);
+        WTF(button9, firstRowField);
+        WTF(buttonX, firstRowField);
+        WTF(button4, firstRowField);
+        WTF(button5, firstRowField);
+        WTF(button6, firstRowField);
+        WTF(buttonMinus, firstRowField);
+        WTF(button1, firstRowField);
+        WTF(button2, firstRowField);
+        WTF(button3, firstRowField);
+        WTF(buttonPlus, firstRowField);
+        WTF(button0, firstRowField);
+        WTF(buttonDot, firstRowField);
+        resultateCalculate(buttonResult, firstRowField);
 
         getContentPane().add(calculatorPanel);
+
         setVisible(true);
+    }
+
+    public void WTF(JButton anyButton, JTextField firstRowField){
+        anyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent pressedButtonSymbol) {
+                text=text+pressedButtonSymbol.getActionCommand();
+                firstRowField.setText(text);
+            }
+        });
+    }
+
+    public void resultateCalculate(JButton anyButton, JTextField firstRowField){
+        anyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent anyButton) {
+                String resultate = firstRowField.getText();
+                System.out.println(resultate);
+            }
+        });
     }
 }
